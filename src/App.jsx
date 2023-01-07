@@ -1,11 +1,35 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { useEffect } from "react";
 import './App.css'
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import Home from './scenes/home/Home';
+import Checkout from './scenes/checkout/Checkout';
+import Navbar from './scenes/global/Navbar';
 
 function App() {
+
+  const scrollToUp = () => {
+
+    const {pathname} = useLocation()
+
+    useEffect(()=> {
+      window.scrollTo(0,0)
+    }, [pathname])
+
+  }
+
+ const props = "visakh"
+
   return (
-    <div className="">
-      <h1 className=''>HI Everyone</h1>
+    <div className="mx-auto"> 
+      <BrowserRouter>
+        <Navbar />
+        <scrollToUp />
+          <Routes>
+            <Route path='/' element={<Home home={props} />}/>
+            <Route path='/checkout' element={<Checkout />}/>
+          </Routes>
+      </BrowserRouter>
     </div>
   )
 }
