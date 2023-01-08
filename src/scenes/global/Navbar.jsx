@@ -1,15 +1,27 @@
-import { Badge, Box } from '@mui/material'
-import React from 'react'
+import { Badge, Box, TextField } from '@mui/material'
+import React, { useState } from 'react'
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { RxHamburgerMenu } from "react-icons/rx";
-import text from "../../../assets/tittle_logo.png"
+import { AiOutlineHeart } from "react-icons/ai";
 import icon from "../../../assets/logo_header.png"
+import AccountCircleOutlined from '@mui/icons-material/AccountCircleOutlined';
+import SearchIcon from '@mui/icons-material/Search';
 
 
 function Navbar() {
+
+    const [searchInput, setSearchInput] = useState("")
+
+    const handlechange = (e) => {
+        setSearchInput(e.target.value)
+    }
+
+
+    console.log(searchInput);
+
   return (
     <header className='mx-auto max-w-7xl my-3 flex justify-between px-4'>
         <div className='flex flex-row space-x-2 items-center '>
@@ -21,23 +33,33 @@ function Navbar() {
             />
             <h1 className='font-bold text-gray-600  font-serif text-2xl md:text-3xl lg:text-4xl'>Zalya</h1>
         </div>
-        <Box className='flex gap-6 items-center cursor-pointer'>
-            
-                <BiSearch 
-                    className="h-6 w-6"
-                />         
-            <Badge badgeContent={4} color="primary">
-                <CgProfile 
-                    className="h-6 w-6"
-                />
-            </Badge>
-            <Badge badgeContent={0} color="primary">
-                <HiOutlineShoppingBag 
-                    className="h-6 w-6"
-                />
-            </Badge>
+        <Box className='flex gap-6 items-center'>
+            <Box className='hidden md:inline items-center relative'>
+               <input 
+                type="text"
+                placeholder='Search here...'
+                onChange={(e) => handlechange(e)}
+                value={searchInput}
+                className="outline-none focus:ring-1 ring-black border border-1   p-3 rounded-full"
+             />
+               <BiSearch className="h-6 absolute cursor-pointer right-2 top-3 w-6"/>
+            </Box>
+            <Box className='gap-6 flex items-center cursor-pointer'>
+    
+                <CgProfile className="h-6 w-6"/>
 
-            <RxHamburgerMenu className="h-6 w-6"/>
+                <Badge badgeContent={0} color="primary">
+                    <HiOutlineShoppingBag 
+                        className="h-6 w-6"
+                    />
+                </Badge>
+                <Badge badgeContent={4} color="primary">
+                    <AiOutlineHeart className="h-6 w-6 hidden md:inline"/>
+                </Badge>
+                <RxHamburgerMenu className="h-6 w-6 md:hidden transition-all duration-200 ease-in-out"/>
+            </Box>
+
+            
         </Box>
     </header>
   )
