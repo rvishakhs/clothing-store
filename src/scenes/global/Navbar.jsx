@@ -9,6 +9,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import icon from "../../../assets/logo_header.png"
 import AccountCircleOutlined from '@mui/icons-material/AccountCircleOutlined';
 import SearchIcon from '@mui/icons-material/Search';
+import Header from "../../../components/Header"
 
 
 function Navbar() {
@@ -23,6 +24,7 @@ function Navbar() {
     console.log(searchInput);
 
   return (
+    <div className='mx-auto max-w-7xl'>
     <header className='mx-auto max-w-7xl my-3 flex justify-between px-4'>
         <div className='flex flex-row space-x-2 items-center '>
             <img 
@@ -53,8 +55,8 @@ function Navbar() {
                         className="h-6 w-6"
                     />
                 </Badge>
-                <Badge badgeContent={4} color="primary">
-                    <AiOutlineHeart className="h-6 w-6 hidden md:inline"/>
+                <Badge className='hidden md:inline' badgeContent={4} color="primary">
+                    <AiOutlineHeart className="h-6 w-6 "/>
                 </Badge>
                 <RxHamburgerMenu className="h-6 w-6 md:hidden transition-all duration-200 ease-in-out"/>
             </Box>
@@ -62,6 +64,11 @@ function Navbar() {
             
         </Box>
     </header>
+    <div className='max-w-7xl mx-auto'>
+
+        <Header />
+    </div>
+    </div>
   )
 }
 
