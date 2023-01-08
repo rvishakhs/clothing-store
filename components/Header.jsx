@@ -15,7 +15,7 @@ export default function Example() {
     // }
   
     return (
-    <div className="bg-white grid grid-cols-3 my-2  items-center  gap-4 md:mx-16 md:grid-cols-7 text-xs md:text-sm"> 
+    <div className="bg-white grid grid-cols-3 my-2 px-2 md:px-8 lg:px-14 xl:px-20  items-center  gap-4 md:mx-16 md:grid-cols-6 text-xs md:text-sm"> 
                {category.map((category) =>(
                 <Navlinks key={category} category={category} />
                 ))}  

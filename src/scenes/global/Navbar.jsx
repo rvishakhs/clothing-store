@@ -24,7 +24,7 @@ function Navbar() {
     console.log(searchInput);
 
   return (
-    <div className='mx-auto max-w-7xl'>
+    <div className='mx-auto max-w-7xl fixed z-50'>
     <header className='mx-auto max-w-7xl my-3 flex justify-between px-4'>
         <div className='flex flex-row space-x-2 items-center '>
             <img 
@@ -33,7 +33,7 @@ function Navbar() {
                 className='md:h-20 md:w-20 h-16 w-16 object-contain'
                 
             />
-            <h1 className='font-bold text-gray-600  font-serif text-2xl md:text-3xl lg:text-4xl'>Zalya</h1>
+            <h1 className='font-bold text-gray-600 decoration   font-serif text-2xl md:text-3xl lg:text-4xl'>Zalya</h1>
         </div>
         <Box className='flex gap-6 items-center'>
             <Box className='hidden md:inline items-center relative'>

@@ -2,7 +2,7 @@ import React from 'react'
 
 function Navlinks({category}) {
   return (
-    <div className='grid grid-cols-3  md:grid-col-7'>
+    <div className='grid grid-cols-3 justify-center items-center md:grid-col-7'>
         <a 
             href={`${category}`} 
             key={category}
