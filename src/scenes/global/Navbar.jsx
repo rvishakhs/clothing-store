@@ -10,6 +10,9 @@ import icon from "../../../assets/logo_header.png"
 import AccountCircleOutlined from '@mui/icons-material/AccountCircleOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import Header from "../../../components/Header"
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { selectBasketItems, setiscartopen } from '../../../redux/store';
 
 
 function Navbar() {
@@ -19,10 +22,9 @@ function Navbar() {
     const handlechange = (e) => {
         setSearchInput(e.target.value)
     }
-
-
-    console.log(searchInput);
-
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const cart = useSelector(selectBasketItems)
   return (
     <div className='mx-auto max-w-7xl fixed z-50'>
     <header className='mx-auto max-w-7xl my-3 flex justify-between px-4'>
@@ -50,12 +52,13 @@ function Navbar() {
     
                 <CgProfile className="h-6 w-6"/>
 
-                <Badge badgeContent={0} color="primary">
+                <Badge badgeContent={cart.length} color="primary">
                     <HiOutlineShoppingBag 
+                        onClick={() => dispatch(setiscartopen({}))}
                         className="h-6 w-6"
                     />
                 </Badge>
-                <Badge className='hidden md:inline' badgeContent={4} color="primary">
+                <Badge className='hidden md:inline' badgeContent={1} color="primary">
                     <AiOutlineHeart className="h-6 w-6 "/>
                 </Badge>
                 <RxHamburgerMenu className="h-6 w-6 md:hidden transition-all duration-200 ease-in-out"/>

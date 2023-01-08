@@ -5,8 +5,8 @@ import { createSlice } from "@reduxjs/toolkit";
 // This is where we setuping initial state of redux "it's just like UseSatate"
 const initialState = {
     isCartOpen : false,
-    cart : [],
-    items : [],  
+    cart : ["apple"],
+    items : ["orange"],  
 }
 
 // step 3
@@ -61,5 +61,12 @@ export const slice = createSlice({
 // exporting the written actions to get global scope
 export const {setitems, addtocart,setiscartopen, removefromcart, increaseCount, decreaseCount} = slice.actions
 
+
+// Selectors
+export const selectBasketItems = (state) => state.cart.cart
+
 //Final step
 export default slice.reducer;
+
+
+// Step 5 need to setup redux confix and wrap the redux in main index file 

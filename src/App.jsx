@@ -24,10 +24,6 @@ function App() {
     <div className="mx-auto"> 
       <BrowserRouter>
         <Navbar />
-        <scrollToUp />
-        {/* <div className='p-3 gap-4'>
-          <Header />
-        </div> */}
           <Routes>
             <Route path='/' element={<Home home={props} />}/>
             <Route path='/checkout' element={<Checkout />}/>
