@@ -5,20 +5,21 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { RxHamburgerMenu } from "react-icons/rx";
-
+import text from "../../../assets/tittle_logo.png"
+import icon from "../../../assets/logo_header.png"
 
 
 function Navbar() {
   return (
-    <header className='mx-auto max-w-7xl my-3 flex justify-between '>
-        <div className='flex flex-row items-center space-x-2'>
+    <header className='mx-auto max-w-7xl my-3 flex justify-between px-4'>
+        <div className='flex flex-row space-x-2 items-center '>
             <img 
                 src={icon}
                 alt="Logo"
-                className='h-20 w-20 object-contain'
+                className='md:h-20 md:w-20 h-16 w-16 object-contain'
                 
             />
-            <h2 className='text-2xl'>Zalya</h2>
+            <h1 className='font-bold text-gray-600  font-serif text-2xl md:text-3xl lg:text-4xl'>Zalya</h1>
         </div>
         <Box className='flex gap-6 items-center cursor-pointer'>
             
