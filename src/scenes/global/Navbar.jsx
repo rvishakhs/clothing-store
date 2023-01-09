@@ -26,7 +26,7 @@ function Navbar() {
     const dispatch = useDispatch();
     const cart = useSelector(selectBasketItems)
   return (
-    <div className='mx-auto max-w-7xl fixed z-50'>
+    <div className=''>
     <header className='mx-auto max-w-7xl my-3 flex justify-between px-4'>
         <div className='flex flex-row space-x-2 items-center '>
             <img 
@@ -68,7 +68,6 @@ function Navbar() {
         </Box>
     </header>
     <div className='max-w-7xl mx-auto'>
-
         <Header />
     </div>
     </div>

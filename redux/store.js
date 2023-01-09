@@ -5,7 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 // This is where we setuping initial state of redux "it's just like UseSatate"
 const initialState = {
     isCartOpen : false,
-    cart : ["apple"],
+    cart : [],
     items : ["orange"],  
 }
 
@@ -63,7 +63,8 @@ export const {setitems, addtocart,setiscartopen, removefromcart, increaseCount, 
 
 
 // Selectors
-export const selectBasketItems = (state) => state.cart.cart
+export const selectBasketItems = (state) => state.cart.cart;
+export const iscartopen = (state) => state.cart.isCartOpen;
 
 //Final step
 export default slice.reducer;
