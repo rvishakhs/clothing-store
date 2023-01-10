@@ -26,7 +26,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
           <Routes>
-            <Route path='/' element={<Home home={props} />}/>
+            <Route path='/' element={<Home />}/>
             <Route path='/checkout' element={<Checkout />}/>
           </Routes>
           <Cartmenu />

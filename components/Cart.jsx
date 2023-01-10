@@ -31,9 +31,9 @@ function Cart({item}) {
       <h2 className='font-normal text-sm '>Hi can you do something for me Hi can you do something for me </h2>
       <div className='flex justify-between'>
         <div className='flex flex-row border items-center space-x-2 border-gray-400 p-[6px]'>
-            <BiMinus onclick={()=> dispatch(decreaseCount({id : item.id}))}  className='h-5 w-5'/>
+            <BiMinus onclick={()=> dispatch(decreaseCount({id : item.id}))}  className='h-5 w-5 cursor-pointer'/>
             <h2 className='font-semibold text-base'>5</h2>
-            <BiPlus onclick={()=> dispatch(increaseCount({id : item.id}))} className='h-5 w-5'/>
+            <BiPlus onclick={()=> dispatch(increaseCount({id : item.id}))} className='h-5 w-5 cursor-pointer'/>
         </div>
         <h2 className='font-semibold mt-2 text-base'>${item.price}</h2>
       </div>
