@@ -55,13 +55,13 @@ function Navbar() {
                 <Badge badgeContent={cart.length} color="primary">
                     <HiOutlineShoppingBag 
                         onClick={() => dispatch(setiscartopen({}))}
-                        className="h-6 w-6"
+                        className="h-6 w-6 cursor-pointer"
                     />
                 </Badge>
                 <Badge className='hidden md:inline' badgeContent={1} color="primary">
-                    <AiOutlineHeart className="h-6 w-6 "/>
+                    <AiOutlineHeart className="h-6 w-6 cursor-pointer "/>
                 </Badge>
-                <RxHamburgerMenu className="h-6 w-6 md:hidden transition-all duration-200 ease-in-out"/>
+                <RxHamburgerMenu className="h-6 w-6 cursor-pointer md:hidden transition-all duration-200 ease-in-out"/>
             </Box>
 
             
