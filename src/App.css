@@ -6,6 +6,13 @@
   .navlinks {
       @apply font-medium hover:underline hover:decoration-2 rounded-full md:p-4 p-2 cursor-pointer hover:font-bold   tracking-wider text-center active:underline underline-offset-8  hover:scale-110 transition-transform duration-200 ease-out decoration-black
   }
+  .img {
+    @apply w-full h-[700px] object-cover bg-fixed
+  }
+  .imgcontainer {
+    @apply text-white p-[20px] rounded-sm text-left bg-black/40 absolute top-[46%] left-[10%] right-[0] max-w-[240px]
+  }
+
 }
 
 
