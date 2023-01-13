@@ -4,7 +4,7 @@ import ItemCard from '../../../components/ItemCard'
 
 function Home({home}) {
   return (
-    <div className='max-w-7xl mx-auto'>
+    <div className='mx-auto'>
       <Crousal />
       {/* <ItemCard /> */}
     </div>

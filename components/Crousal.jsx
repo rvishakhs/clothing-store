@@ -1,55 +1,69 @@
-import React from 'react'
-import Carousel from 'react-bootstrap/Carousel';
-import { GrPrevious, GrNext } from "react-icons/gr";
+import React, { useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+import image_1 from "../assets/image_1.jpeg";
+import image_2 from "../assets/image_2.jpeg";
+import image_3 from "../assets/image_3.jpeg";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+
+// import required modules
+import { EffectFade, Navigation, Pagination } from "swiper";
 
 function Crousal() {
   return (
-    <Carousel>
-      <Carousel.Item>
-      <img  
-        className='img' 
-        src="https://images.freeimages.com/images/large-previews/433/shoe-maker-1241052.jpg"
-      />
-        <Carousel.Caption>
-          <div className='imgcontainer space-y-2'>
-                <h2 className='font-sans font-semibold'>-- New Items </h2>
-                <h2 className='font-sans font-bold text-2xl'>Summer Sale</h2>
-                <h2 className='font-medium text-lg underline'>Discover more</h2>
-            </div>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-      <img 
-        className='img' 
-        src="https://images.freeimages.com/images/large-previews/6fd/water-pipe-1199810.jpg"
-      />
-
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-         <img 
-            className='img' 
-            src="https://images.freeimages.com/images/large-previews/461/star-is-a-stranger-1157577.jpg" 
-        />
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+    <>
+        <Swiper
+            spaceBetween={30}
+            effect={"fade"}
+            navigation={true}
+            pagination={{
+            clickable: true,
+            }}
+            modules={[EffectFade, Navigation, Pagination]}
+            className="mySwiper h-[450px]"
+        >
+            <SwiperSlide>
+                <img  
+                    src={image_1}
+                    className="img object-cover"
+                />
+                <div className='imgcontainer space-y-2'>
+                    <h2 className='font-sans font-semibold'>-- New Items </h2>
+                    <h2 className='font-sans font-bold text-2xl'>Summer Sale</h2>
+                    <h2 className='font-medium text-lg underline'>Discover more</h2>
+                </div>
+            </SwiperSlide>
+            <SwiperSlide>
+                <img 
+                    src={image_2}
+                    className="img"
+                />
+                <div className='imgcontainer space-y-2'>
+                    <h2 className='font-sans font-semibold'>-- New Items </h2>
+                    <h2 className='font-sans font-bold text-2xl'>Summer Sale</h2>
+                    <h2 className='font-medium text-lg underline'>Discover more</h2>
+                </div>
+            </SwiperSlide>
+            <SwiperSlide>
+                <img 
+                    src={image_3}
+                    className="img"
+                    />
+                <div className='imgcontainer space-y-2'>
+                    <h2 className='font-sans font-semibold'>-- New Items </h2>
+                    <h2 className='font-sans font-bold text-2xl'>Summer Sale</h2>
+                    <h2 className='font-medium text-lg underline'>Discover more</h2>
+                </div>
+            </SwiperSlide>
+        </Swiper>
+    </>
   )
 }
-
-
-
-
-
-
-
 
 export default Crousal
