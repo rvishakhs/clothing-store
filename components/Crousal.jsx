@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import image_1 from "../assets/image_1.jpeg";
 import image_2 from "../assets/image_2.jpeg";
 import image_3 from "../assets/image_3.jpeg";
+import image_4 from "../assets/image_4.jpeg";
 
 // Import Swiper styles
 import "swiper/css";
@@ -45,8 +46,8 @@ function Crousal() {
                     className="img"
                 />
                 <div className='imgcontainer space-y-2'>
-                    <h2 className='font-sans font-semibold'>-- New Items </h2>
-                    <h2 className='font-sans font-bold text-2xl'>Summer Sale</h2>
+                    <h2 className='font-sans font-semibold'>-- Featured Items -- </h2>
+                    <h2 className='font-sans font-bold text-2xl'>Winter Season Collection</h2>
                     <h2 className='font-medium text-lg underline'>Discover more</h2>
                 </div>
             </SwiperSlide>
@@ -55,7 +56,18 @@ function Crousal() {
                     src={image_3}
                     className="img"
                     />
-                <div className='imgcontainer space-y-2'>
+                <div className='imgcontainer2 space-y-2'>
+                    <h2 className='font-sans font-semibold'>-- New Items </h2>
+                    <h2 className='font-sans font-bold text-2xl'>Summer Sale</h2>
+                    <h2 className='font-medium text-lg underline'>Discover more</h2>
+                </div>
+            </SwiperSlide>
+            <SwiperSlide>
+                <img 
+                    src={image_4}
+                    className="img"
+                    />
+                <div className='imgcontainer2 space-y-2'>
                     <h2 className='font-sans font-semibold'>-- New Items </h2>
                     <h2 className='font-sans font-bold text-2xl'>Summer Sale</h2>
                     <h2 className='font-medium text-lg underline'>Discover more</h2>

@@ -7,6 +7,7 @@ function Home({home}) {
     <div className='mx-auto'>
       <Crousal />
       {/* <ItemCard /> */}
+      <ShoppingList />
     </div>
   )
 }

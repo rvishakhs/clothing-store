@@ -10,7 +10,10 @@
     @apply w-full h-[700px] object-cover bg-fixed
   }
   .imgcontainer {
-    @apply text-white p-[20px] rounded-sm text-left bg-black/40 absolute top-[46%] left-[10%] right-[0] max-w-[240px]
+    @apply text-white p-[30px] rounded-sm text-left bg-black/40 absolute top-[33%] left-[10%] right-[0] max-w-[240px]
+  }
+  .imgcontainer2 {
+    @apply text-white p-[40px] rounded-sm text-left bg-black/60 absolute top-[33%] right-[10%] max-w-[240px]
   }
 
 }
