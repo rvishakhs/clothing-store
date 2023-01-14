@@ -3,6 +3,7 @@ import { selectAllItems } from '../redux/store';
 import { useDispatch, useSelector } from "react-redux";
 import { setitems } from "../redux/store";
 import fetchitems from "../utils/fetchitems";
+import ItemCard from "./ItemCard";
 
 function ShoppingList() {
 
@@ -24,7 +25,7 @@ function ShoppingList() {
 
   return (
     <div>
-
+        <ItemCard />
     </div>
   )
 }
