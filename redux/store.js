@@ -6,7 +6,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     isCartOpen : false,
     cart : [],
-    items : ["orange"],  
+    items : [],  
 }
 
 // step 3
@@ -64,6 +64,7 @@ export const {setitems, addtocart,setiscartopen, removefromcart, increaseCount, 
 
 // Selectors
 export const selectBasketItems = (state) => state.cart.cart;
+export const selectAllItems = (state) => state.cart.items;
 export const iscartopen = (state) => state.cart.isCartOpen;
 
 //Final step
