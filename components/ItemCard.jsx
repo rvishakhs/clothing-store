@@ -4,12 +4,17 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { iscartopen, selectBasketItems } from '../redux/store';
 import { BiMinus, BiPlus } from "react-icons/bi";
 
-function ItemCard() {
+function ItemCard({data}) {
     const [ismousehovered, setismousehovered] = useState(false)
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const cart = useSelector(selectBasketItems)
     const isCartOpen = useSelector(iscartopen)
+
+
+
+      const imageurl = data.attributes.image.data[0].attributes.url
+
   return (
     <div 
         className='flex flex-col w-[300px] h-[500px]'    
@@ -19,7 +24,7 @@ function ItemCard() {
             onMouseLeave={() => setismousehovered(false)}
         >
             <img 
-                src='https://images.pexels.com/photos/5611966/pexels-photo-5611966.jpeg?cs=srgb&dl=pexels-maksim-goncharenok-5611966.jpg&fm=jpg'
+                src={`http://localhost:1337${imageurl}`}
                 alt="text"
                 className='w-[300px] h-[400px] object-cover cursor-pointer'
                 onClick={() => navigate("/items")}
@@ -36,7 +41,7 @@ function ItemCard() {
             </div>
         </div>
         <div className='mt-2 flex-col space-y-1'>
-            <h2 className='text-gray-500/80 font-medium text-sm'>Category</h2>
+            <h2 className='text-gray-500/80 font-medium text-sm'>{data.attributes.category}</h2>
             <h2 className='text-black font-semibold text-base'>Western T-shirt</h2>
             <h2 className='font-semibold text-black text-base'>$ 20</h2>
         </div>
