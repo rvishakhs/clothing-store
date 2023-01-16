@@ -13,9 +13,11 @@ function Cartmenu() {
   const cart = useSelector(selectBasketItems)
   const isCartOpen = useSelector(iscartopen)
 
-  const totalprice = cart.reduce((total , item) => {
-    return total + item.count * item.attribute.price
-}, 0)
+  console.log(cart);
+
+//   const totalprice = cart.reduce((total , item) => {
+//     return total + item.count * item.attribute.price
+// }, 0)
 
   return (
     <div className={isCartOpen ? "block bg-black/40 fixed z-50 w-full h-full left-0 top-0 overflow-auto" : "hidden"}>
@@ -30,7 +32,7 @@ function Cartmenu() {
             })}
             <div className='flex flex-row border-t-2 pt-3 justify-between px-2'>
                 <h2 className='uppercase font-semibold text-sm '>Subtotal</h2>
-                <h2 className='font-semibold text-sm '>$ <span>{totalprice}</span></h2>
+                <h2 className='font-semibold text-sm '>$ <span></span></h2>
             </div>
             <button className='w-full p-2 bg-black text-white font-semibold'>
               Check out
