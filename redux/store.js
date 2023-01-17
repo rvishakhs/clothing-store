@@ -57,6 +57,7 @@ export const slice = createSlice({
 })
 
 
+
 // step 4
 // exporting the written actions to get global scope
 export const {setitems, addtocart,setiscartopen, removefromcart, increaseCount, decreaseCount} = slice.actions
