@@ -15,8 +15,16 @@ function Cartmenu() {
 
   console.log(cart);
 
-  
+  const subtotal = cart.reduce((acc, item) => {
+    return acc + item.count * item.attributes.price
+  }, 0)
 
+
+  // Reduce Function {working}
+
+  // In this case we passing cart array to reduce function it's accept two value's One accumlator {acc} and
+  // current value {item} item suppose to be filtering through each item of the array and this returns a value
+  // we need to provide an initial value here it is zero {0} 
 
   return (
     <div className={isCartOpen ? "block bg-black/40 fixed z-50 w-full h-full left-0 top-0 overflow-auto" : "hidden"}>
@@ -31,7 +39,7 @@ function Cartmenu() {
             )}
             <div className='flex flex-row border-t-2 pt-3 justify-between px-2'>
                 <h2 className='uppercase font-semibold text-sm '>Subtotal</h2>
-                <h2 className='font-semibold text-sm '>$ {} <span></span></h2>
+                <h2 className='font-semibold text-sm '>$ {subtotal} <span></span></h2>
             </div>
             <button className='w-full p-2 bg-black text-white font-semibold'>
               Check out
