@@ -3,6 +3,7 @@ import Crousal from '../../../components/Crousal'
 import ItemCard from '../../../components/ItemCard'
 import Subscribe from '../../../components/Subscribe'
 import ShoppingList from '../../../components/ShoppingList'
+import Footer from '../global/Footer'
 
 function Home({home}) {
   return (
@@ -10,6 +11,7 @@ function Home({home}) {
       <Crousal />
       <ShoppingList />
       <Subscribe />
+      <Footer />
     </div>
   )
 }
