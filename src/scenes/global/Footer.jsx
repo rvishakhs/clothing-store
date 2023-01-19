@@ -1,7 +1,11 @@
 import React from 'react'
 import logo from "../../../assets/Logo_footer.png"
 
-import   {facebook, instagram, linkedin, twitter}  from "../../../assets";
+// import   {facebook, instagram, linkedin, twitter}  from "../../../assets";
+import    instagram  from "../../../assets/instagram.svg";
+import    facebook  from "../../../assets/facebook.svg";
+import    linkedin  from "../../../assets/linkedin.svg";
+import    twitter  from "../../../assets/twitter.svg";
 
 const footerLinks = [
     {
@@ -95,8 +99,8 @@ const footerLinks = [
 
 function Footer() {
     return (
-      <section className={`flex items-center justify-center  flex-col md:px-16 px-4 `}>
-          <div className={`flex items-start md:flex-row flex-col mb-8 w-full`}>
+      <section className={`flex items-center bg-gray-400/20 flex-col md:px-16 px-4 `}>
+          <div className={`flex items-start md:flex-row flex-col mt-3 mb-8 w-full`}>
               <div className='flex-[1] flex-col  justify-start space-y-2 mr-10'>
                   <img 
                       src={logo}
@@ -108,7 +112,7 @@ function Footer() {
               <div className={`flex-[1.5] flex w-full flex-row justify-between flex-wrap md:mt-0 mt-10  `}>
                   {footerLinks.map((footerlink) => (
                       <div key={footerlink.title} className="flex flex-col space-y-3 text-dimWhite">
-                          <h2 className={`font-poppins font-medium text-[18px] leading-[27px] text-white`}>{footerlink.title}</h2>
+                          <h2 className={`font-poppins font-bold text-[18px] leading-[27px] text-black`}>{footerlink.title}</h2>
                           {footerlink.links.map((link) => (
                               <li className='list-none cursor-pointer hover:text-blue-300'>{link.name}</li>
                           ))}
@@ -116,10 +120,10 @@ function Footer() {
                   )) }
               </div>
           </div>
-          <div className='flex md:flex-row justify-between'>
-              <p className='text-white flex items-center'>Copyright © 2021 HooBank. All Rights Reserved.</p>
+          <div className='flex md:flex-row my-3 justify-between'>
+              <p className='text-black flex items-center'>Copyright © 2021 HooBank. All Rights Reserved.</p>
                   {socialMedia.map((social) => (
-                      <div id={social.id} className='flex flex-row  space-x-3'>
+                      <div id={social.id} className='flex flex-row gap-4 space-x-3'>
                           <img 
                               src={social.icon}
                               alt={social.id}
