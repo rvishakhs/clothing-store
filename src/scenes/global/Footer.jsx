@@ -123,7 +123,7 @@ function Footer() {
           <div className='flex md:flex-row my-3 justify-between'>
               <p className='text-black flex items-center'>Copyright © 2021 HooBank. All Rights Reserved.</p>
                   {socialMedia.map((social) => (
-                      <div id={social.id} className='flex flex-row gap-4 space-x-3'>
+                      <div id={social.id} className='flex  gap-4 space-x-3'>
                           <img 
                               src={social.icon}
                               alt={social.id}
