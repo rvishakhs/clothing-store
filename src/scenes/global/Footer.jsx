@@ -6,6 +6,7 @@ import    instagram  from "../../../assets/instagram.svg";
 import    facebook  from "../../../assets/facebook.svg";
 import    linkedin  from "../../../assets/linkedin.svg";
 import    twitter  from "../../../assets/twitter.svg";
+import { SocialIcon } from 'react-social-icons';
 
 const footerLinks = [
     {
@@ -101,13 +102,13 @@ function Footer() {
     return (
       <section className={`flex items-center bg-gray-400/20 flex-col md:px-16 px-4 `}>
           <div className={`flex items-start md:flex-row flex-col mt-3 mb-8 w-full`}>
-              <div className='flex-[1] flex-col  justify-start space-y-2 mr-10'>
+              <div className='flex-[1] flex-col items-center justify-start space-y-2 mr-10'>
                   <img 
                       src={logo}
                       alt="logo"
-                      className="w-[266px] h-[72px] object-contain "
+                      className="w-[266px] h-[72px] object-contain"
                   />
-                  <p className={` max-w-[350px]`}>A new way to make the payments easy, reliable and secure.</p>
+                  <p className={`max-w-[350px] text-justify`}>Upgrade your wardrobe with our stylish and high-quality textiles - shop now at Zalya! Transform your home decor with our beautiful and durable textiles - shop now at Zalya!</p>
               </div>
               <div className={`flex-[1.5] flex w-full flex-row justify-between flex-wrap md:mt-0 mt-10  `}>
                   {footerLinks.map((footerlink) => (
@@ -121,16 +122,13 @@ function Footer() {
               </div>
           </div>
           <div className='flex md:flex-row my-3 justify-between'>
-              <p className='text-black flex items-center'>Copyright © 2021 HooBank. All Rights Reserved.</p>
-                  {socialMedia.map((social) => (
-                      <div id={social.id} className='flex  gap-4 space-x-3'>
-                          <img 
-                              src={social.icon}
-                              alt={social.id}
-                              className="w-[21px] h-[21px]" 
-                          />
+              <p className='text-black flex items-center'> Copyright © 2021 HooBank. All Rights Reserved.</p>
+                      <div className='flex  ml-2 space-x-3'>
+                            <SocialIcon url="https://www.linkedin.com/in/visakh-sr-6766b4142/" />
+                            <SocialIcon url="https://www.facebook.com/rvishakhs" />
+                            <SocialIcon url="https://www.instagram.com/visakhsr1996/" />
+                            <SocialIcon url="https://github.com/rvishakhs" />
                       </div>
-                  ))}
           </div>
       </section>
     )
