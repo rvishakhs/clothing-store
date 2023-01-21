@@ -29,13 +29,13 @@ function ItemCard({data}) {
                 src={`http://localhost:1337${imageurl}`}
                 alt="text"
                 className='w-[300px] h-[400px] object-cover cursor-pointer'
-                onClick={() => navigate("/items")}
+                onClick={() => navigate(`/item/${data.id}`)}
             />
             <div className={ismousehovered ? "block absolute bottom-[6%] left-0 w-full px-[5%]" : "hidden"}>
                 <div className='flex justify-between'>
                     <div className='flex flex-row border items-center space-x-2 border-gray-400 p-[6px]'>
                         <BiMinus onClick={() => setcount(Math.max(count -1 , 1))}  className='h-5 w-5 cursor-pointer'/>
-                             <h2 className='font-semibold text-base'>{count}</h2>
+                            <h2 className='font-semibold text-base'>{count}</h2>
                         <BiPlus onClick={()=> setcount(count + 1 )} className='h-5 w-5 cursor-pointer'/>
                     </div>
                     <button 

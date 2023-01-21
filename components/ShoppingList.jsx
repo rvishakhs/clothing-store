@@ -34,8 +34,6 @@ function ShoppingList() {
   const fastMovingItems = items.filter((item) => item.attributes.category  === "fast moving")
   
 
-  console.log(offerzoneItems);
-
   return (
     <Box className="max-w-7xl px-4 md:px-0 my-4 mx-auto">
         <h2 className="mt-9 flex justify-center font-semibold text-3xl tracking-widest font-serif">Our Featured Products</h2>

@@ -13,7 +13,7 @@ function Cartmenu() {
   const cart = useSelector(selectBasketItems)
   const isCartOpen = useSelector(iscartopen)
 
-  console.log(cart);
+
 
   const subtotal = cart.reduce((acc, item) => {
     return acc + item.count * item.attributes.price
