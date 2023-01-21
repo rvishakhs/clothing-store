@@ -35,7 +35,10 @@ function Navbar() {
                 className='md:h-20 md:w-20 h-16 w-16 object-contain'
                 
             />
-            <h1 className='font-bold text-gray-600 decoration   font-serif text-2xl md:text-3xl lg:text-4xl'>Zalya</h1>
+            <a href='/'>
+                <h1 className='font-bold text-gray-600 decoration   font-serif text-2xl md:text-3xl lg:text-4xl'>Zalya</h1>
+            </a> 
+            
         </div>
         <Box className='flex gap-6 items-center'>
             <Box className='hidden md:inline items-center relative'>
