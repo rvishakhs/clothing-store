@@ -8,6 +8,7 @@ import Navbar from './scenes/global/Navbar';
 import Header from "../components/Header"
 import Cartmenu from './scenes/global/Cartmenu';
 import Itemdetails from './scenes/itemdetails/Itemdetails';
+import Footer from './scenes/global/Footer';
 function App() {
 
   const scrollToUp = () => {
@@ -32,6 +33,7 @@ function App() {
             <Route path='/checkout' element={<Checkout />}/>
           </Routes>
           <Cartmenu />
+          <Footer />
       </BrowserRouter>
     </div>
   )

@@ -11,7 +11,6 @@ function Home({home}) {
       <Crousal />
       <ShoppingList />
       <Subscribe />
-      <Footer />
     </div>
   )
 }

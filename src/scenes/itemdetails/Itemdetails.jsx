@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { addtocart } from '../../../redux/store';
 import { AiOutlineDown } from "react-icons/ai";
 import ItemCard from '../../../components/ItemCard';
+import RelatedCard from '../../../components/RelatedCard';
 
 function Itemdetails() {
 
@@ -139,10 +140,10 @@ function Itemdetails() {
         </div>
         <div className='w-[85%] mx-auto mt-6'>
             <h2 className='text-2xl font-semibold '>Related Items</h2>
-                <div className='flex flex-row space-x-2 overflow-x-scroll overflow-y-hidden'>
+                <div className='flex flex-row space-x-8 overflow-x-scroll overflow-y-hidden'>
                     {relateditems.map((item) => (
                         <div className=''>
-                            <ItemCard data={item} key={`${item.name}-${item.id}`}/>
+                            <RelatedCard data={item} key={`${item.name}-${item.id}`}/>
                         </div>
                     ))}
                 </div>

@@ -122,7 +122,7 @@ function Footer() {
               </div>
           </div>
           <div className='flex md:flex-row my-3 justify-between'>
-              <p className='text-black flex items-center'> Copyright © 2021 HooBank. All Rights Reserved.</p>
+              <p className='text-black flex items-center'> Copyright © 2021 Zalya. All Rights Reserved.</p>
                       <div className='flex  ml-2 space-x-3'>
                             <SocialIcon url="https://www.linkedin.com/in/visakh-sr-6766b4142/" />
                             <SocialIcon url="https://www.facebook.com/rvishakhs" />
