@@ -18,7 +18,6 @@ function ShoppingList() {
     setValue(newvalue)
   }
 
-
   useEffect(() => {
     async function datafetch () {
       const itemsdata = await fetchitems()
