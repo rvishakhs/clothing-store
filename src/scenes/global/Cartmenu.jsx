@@ -14,7 +14,12 @@ function Cartmenu() {
   const isCartOpen = useSelector(iscartopen)
 
 
+  const handleCLick = () => {
+     navigate("/checkout")
+     dispatch(setiscartopen({}))
+  }
 
+ 
   const subtotal = cart.reduce((acc, item) => {
     return acc + item.count * item.attributes.price
   }, 0)
@@ -41,8 +46,11 @@ function Cartmenu() {
                 <h2 className='uppercase font-semibold text-sm '>Subtotal</h2>
                 <h2 className='font-semibold text-sm '>$ {subtotal} <span></span></h2>
             </div>
-            <button className='w-full p-2 bg-black text-white font-semibold'>
-              Check out
+            <button 
+              className='w-full p-2 bg-black text-white font-semibold'
+              onClick={handleCLick}
+            >
+                Check out
             </button>
           </div>
         </div>
