@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Stepper, Step, Box, StepLabel } from '@mui/material';
 import { Formik, useFormik } from 'formik';
 import * as Yup from 'yup';
+import Shipping from './Shipping';
 
 
 
@@ -111,7 +112,20 @@ function Checkout() {
           initialValues={initialvalues}
           validationSchema={checkoutSchema}
         >
-          {({values, errors, touched, handleBlur, })}
+          {({values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue }) => (
+            <form onSubmit={handleSubmit}>
+              {isbillingstate && (
+                <Shipping 
+                  values={values}
+                  errors={errors}
+                  touched={touched}
+                  handleBlur={handleBlur}
+                  handleChange={handleChange}
+                  setFieldValue={setFieldValue}
+                />
+              )}
+            </form>
+          )}
 
         </Formik>
       </Box>
