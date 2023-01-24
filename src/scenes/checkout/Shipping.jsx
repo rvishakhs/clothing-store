@@ -13,7 +13,18 @@ function Shipping({
     return (    
         <Box className="m-7 mx-auto">
             <h2 className='font-bold text-2xl'>Billing Information</h2>
-            <AddressInfo />
+            <AddressInfo 
+                type="Address"
+                values={values}
+                errors={errors}
+                touched={touched}
+                handleBlur={handleBlur}
+                handleChange={handleChange}
+                setFieldValue={setFieldValue} 
+            />
+            <Box>
+                
+            </Box>
         </Box>
     )
     }
