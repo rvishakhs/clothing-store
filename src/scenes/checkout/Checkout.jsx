@@ -12,6 +12,10 @@ function Checkout() {
   const isbillingstate = activeStep === 0
   const ispaymentstate = activeStep === 1
 
+  const handleformsubmit = () => {
+    console.log("Form submit")
+  }
+
   const initialvalues = {
     billingaddress: {
       firstname : " " ,
@@ -52,7 +56,7 @@ function Checkout() {
         postcode : Yup.string().required("Required"),
       }),
       shippingaddress : Yup.object().shape({
-        isSameAddress: yup.boolean(),
+        isSameAddress: Yup.boolean(),
         firstname : Yup.string().when("isSameAddress", {
             is : false , 
             then : Yup.string().required("Required")
@@ -90,8 +94,8 @@ function Checkout() {
     })
     }),
     Yup.object().shape({
-        email : yup.string().required("required"),
-        Phonenumber: yup.string().required("required"),
+        email : Yup.string().required("required"),
+        Phonenumber: Yup.string().required("required"),
     }),
   ];
 
