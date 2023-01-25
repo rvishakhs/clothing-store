@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Stepper, Step, Box, StepLabel } from '@mui/material';
+import { Stepper, Step, Box, StepLabel, Button } from '@mui/material';
 import { Formik, useFormik } from 'formik';
 import * as Yup from 'yup';
 import Shipping from './Shipping';
+import Payment from './Payment';
 
 
 
@@ -13,7 +14,7 @@ function Checkout() {
   const ispaymentstate = activeStep === 1
 
   const handleformsubmit = () => {
-    console.log("Form submit")
+    setActiveStep(activeStep + 1)
   }
 
   const initialvalues = {
@@ -128,6 +129,30 @@ function Checkout() {
                   setFieldValue={setFieldValue}
                 />
               )}
+              {ispaymentstate && (
+                <Payment />
+              )}
+              <Box className='flex justify-between gap-8'>
+                {!isbillingstate && (
+                  <Button 
+                    className="py-4 px-3  border border-spacing-1 bg-black text-white "
+                    onClick={ () => setActiveStep(activeStep - 1)}
+                    color='primary'
+                    variant='contained'
+                  >
+                    
+                      Back
+                  </Button>
+                )}
+                  <Button                                         
+                    color='primary'
+                    variant='contained'
+                    className="p-3 bg-black text-white "
+                    onClick={handleformsubmit}
+                  >
+                      {!ispaymentstate ? 'Next' : "Place order" }
+                  </Button>
+              </Box>
             </form>
           )}
 
