@@ -13,8 +13,20 @@ function Checkout() {
   const isbillingstate = activeStep === 0
   const ispaymentstate = activeStep === 1
 
-  const handleformsubmit = () => {
+  const handleformsubmit = (values, actions) => {
     setActiveStep(activeStep + 1)
+
+    if(isbillingstate && values.shippingaddress.issameaddress) {
+      actions.setFieldValue("shippingaddress", {
+        ...values.billingaddress,
+        issameaddress : true,
+      })      
+    }
+
+    if(ispaymentstate) {
+
+    }
+
   }
 
   const initialvalues = {
@@ -130,7 +142,14 @@ function Checkout() {
                 />
               )}
               {ispaymentstate && (
-                <Payment />
+                <Payment
+                  values={values}
+                  errors={errors}
+                  touched={touched}
+                  handleBlur={handleBlur}
+                  handleChange={handleChange}
+                  setFieldValue={setFieldValue} 
+                />
               )}
               <Box className='flex justify-between gap-8'>
                 {!isbillingstate && (
