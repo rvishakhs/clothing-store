@@ -16,6 +16,8 @@
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.3",
     "@reduxjs/toolkit": "^1.9.1",
+    "@stripe/react-stripe-js": "^1.16.4",
+    "@stripe/stripe-js": "^1.46.0",
     "bootstrap": "^5.2.3",
     "dotenv": "^16.0.3",
     "formik": "^2.2.9",
@@ -27,6 +29,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.6.1",
     "react-social-icons": "^5.15.0",
+    "stripe": "^11.8.0",
     "swiper": "^8.4.5",
     "yup": "^0.32.11"
   },

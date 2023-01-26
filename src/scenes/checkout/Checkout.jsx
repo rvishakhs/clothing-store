@@ -4,10 +4,20 @@ import { Formik, useFormik } from 'formik';
 import * as Yup from 'yup';
 import Shipping from './Shipping';
 import Payment from './Payment';
+import { loadStripe } from "@stripe/stripe-js";
 
 
 
 function Checkout() {
+
+
+  const stripePromise = loadStripe('pk_test_51LoYjSCzkqYRFFPL04LuA18faZFYCuyik4ozHHC9BOVy6RpTGTlQikWiKnReXndQ9DqQ3jZvRdHDCNUptFcjQciu005TC4JLKU');
+  
+  async function makePayment(values) {
+      const stripe = await stripePromise;
+      
+      
+  }  
 
   const [activeStep, setActiveStep] = useState(0)
   const isbillingstate = activeStep === 0
@@ -27,6 +37,7 @@ function Checkout() {
 
     }
 
+    actions.settouched({})
   }
 
   const initialvalues = {
@@ -165,6 +176,7 @@ function Checkout() {
                 )}
                   <Button                                         
                     color='primary'
+                    type="submit"
                     variant='contained'
                     className="p-3 bg-black text-white "
                     onClick={handleformsubmit}
