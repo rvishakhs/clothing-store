@@ -5,6 +5,8 @@ import * as Yup from 'yup';
 import Shipping from './Shipping';
 import Payment from './Payment';
 import { loadStripe } from "@stripe/stripe-js";
+import { useSelector } from 'react-redux';
+import { selectBasketItems } from '../../../redux/store';
 
 
 
@@ -15,13 +17,20 @@ function Checkout() {
   
   async function makePayment(values) {
       const stripe = await stripePromise;
-      
+      const requestBody = {
+        userName : [values.firstname, values.lastname].join(" "),
+        email: [values.email],
+        products : cart.Map(({id, count}) => ({
+          id, count,
+        }))
+      }
       
   }  
 
-  const [activeStep, setActiveStep] = useState(0)
+  const [activeStep, setActiveStep] = useState(1)
   const isbillingstate = activeStep === 0
   const ispaymentstate = activeStep === 1
+  const cart = useSelector(selectBasketItems)
 
   const handleformsubmit = (values, actions) => {
     setActiveStep(activeStep + 1)
