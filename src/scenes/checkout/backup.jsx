@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Stepper, Step, Box, StepLabel, Button } from '@mui/material';
-import { Form, useFormik, validateYupSchema  } from 'formik';
+import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import Shipping from './Shipping';
 import Payment from './Payment';
@@ -66,40 +66,6 @@ function Checkout() {
     console.log(error.message);
 
 }
-
-const formik = useFormik({
-  initialValues :  {
-    billingaddress: {
-      firstname : "" ,
-      lastname : " " ,
-      country : " " ,
-      street1 : " " ,
-      street2 : " " ,
-      city : " " ,
-      state : " " ,
-      postcode : " " ,
-    },
-    shippingaddress: {
-      issameaddress : true,
-      firstname : " " ,
-      lastname : " " ,
-      country : " " ,
-      street1 : " " ,
-      street2 : " " ,
-      city : " " ,
-      state : " " ,
-      postcode : " " ,
-    },
-
-    email : " ",
-    Phonenumber : " ",
-  },
-
-  onSubmit : values => {
-    handleformsubmit(values)
-  }, 
-
-})
 
   const initialvalues = {
     billingaddress: {
@@ -196,30 +162,31 @@ const formik = useFormik({
         </Step>
       </Stepper>
       <Box>
-        {/* <Formik 
+        <Formik 
           onSubmit={handleformsubmit}
           initialValues={initialvalues}
           validationSchema={checkoutSchema[activeStep]}
-        > */}
-            <form onSubmit={formik.handleSubmit}>
+        >
+          {({values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue }) => (
+            <Form onSubmit={handleSubmit}>
               {isbillingstate && (
                 <Shipping 
-                  values={formik.values}
-                  errors={formik.errors}
-                  touched={formik.touched}
-                  handleBlur={formik.handleBlur}
-                  handleChange={formik.handleChange}
-                  setFieldValue={formik.setFieldValue}
+                  values={values}
+                  errors={errors}
+                  touched={touched}
+                  handleBlur={handleBlur}
+                  handleChange={handleChange}
+                  setFieldValue={setFieldValue}
                 />
               )}
               {ispaymentstate && (
                 <Payment
-                  values={formik.values}
-                  errors={formik.errors}
-                  touched={formik.touched}
-                  handleBlur={formik.handleBlur}
-                  handleChange={formik.handleChange}
-                  setFieldValue={formik.setFieldValue} 
+                  values={values}
+                  errors={errors}
+                  touched={touched}
+                  handleBlur={handleBlur}
+                  handleChange={handleChange}
+                  setFieldValue={setFieldValue} 
                 />
               )}
               <Box className='flex justify-between gap-8'>
@@ -243,8 +210,10 @@ const formik = useFormik({
                       {!ispaymentstate ? 'Next' : "Place order" }
                   </Button>
               </Box>
-            </form>
-        {/* </Formik> */}
+            </Form>
+          )}
+
+        </Formik>
       </Box>
     </Box>
   )

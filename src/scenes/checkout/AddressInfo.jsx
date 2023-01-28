@@ -40,8 +40,8 @@ function AddressInfo({
             onChange={handleChange}
             value={values.billingaddress.firstname}
             name={"firstName"}
-            error={"firstName"}
-            helperText={"firstName"}
+            error={!!touched.firstname && !!errors.firstname }
+            helperText={touched.firstname && errors.firstname}
         />
         <TextField 
             className='grid col-span-2'
@@ -50,10 +50,10 @@ function AddressInfo({
             label="Last Name"
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.billingaddress.lastname}
+            value={values.lastname}
             name={"LastName"}
-            error={"LastName"}
-            helperText={"LastName"}
+            error={!!touched.lastname && !!errors.lastname}
+            helperText={touched.lastname && errors.lastname}
         />
         <TextField 
             className='grid col-span-4'
@@ -62,10 +62,10 @@ function AddressInfo({
             label="Country"
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.billingaddress.country}
+            value={values.country}
             name={"Country"}
-            error={"Country"}
-            helperText={"Country"}
+            error={!!touched.country && !!errors.country}
+            helperText={touched.country && errors.country}
         />
         <TextField 
             className='grid col-span-2'
@@ -74,10 +74,10 @@ function AddressInfo({
             label="Street 1"
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.billingaddress.street1}
+            value={values.street1}
             name={"Street1"}
-            error={"Street1"}
-            helperText={"Street1"}
+            error={!!touched.street1 && !!errors.street1}
+            helperText={touched.street1 && errors.street1}
         />
         <TextField 
             className='grid col-span-2'
@@ -86,10 +86,10 @@ function AddressInfo({
             label="Street 2"
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.billingaddress.street2}
+            value={values.street2}
             name={"Street2"}
-            error={"Street2"}
-            helperText={"Street2"}
+            error={!!touched.street2 && !!errors.street2}
+            helperText={touched.street2 && errors.street2}
         />
         <TextField 
             className='grid col-span-2'
@@ -98,10 +98,10 @@ function AddressInfo({
             label="City"
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.billingaddress.city}
+            value={values.city}
             name={"City"}
-            error={"City"}
-            helperText={"City"}
+            error={!!touched.city && !!errors.city}
+            helperText={touched.city && errors.city}
         />
         <TextField 
             className='grid col-span-2'
@@ -110,10 +110,10 @@ function AddressInfo({
             label="State"
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.billingaddress.state}
+            value={values.state}
             name={"State"}
-            error={"State"}
-            helperText={"State"}
+            error={!!touched.state && !!errors.state}
+            helperText={touched.state && errors.state}
         />
         <TextField 
             className='grid col-span-2'
@@ -122,10 +122,10 @@ function AddressInfo({
             label="Zip Code"
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.billingaddress.postcode}
+            value={values.postcode}
             name={"Zipcode"}
-            error={"Zipcode"}
-            helperText={"Zipcode"}
+            error={!!touched.postcode && !!errors.postcode}
+            helperText={touched.postcode && errors.postcode}
         />
 
     </Box>
