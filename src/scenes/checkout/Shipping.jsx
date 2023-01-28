@@ -1,27 +1,58 @@
-import { Box, Checkbox, FormControlLabel } from '@mui/material'
+import { Box, Checkbox, FormControlLabel, TextField } from '@mui/material'
 import React from 'react'
+import { Controller, useController, useForm } from "react-hook-form";
 import AddressInfo from './AddressInfo'
 
 function Shipping({ 
-    values,
-    errors,
-    touched,
-    handleBlur,
-    handleChange,
-    setFieldValue,})  {
+        control,
+    }){
+
+     const {
+            field,
+            fieldState: { invalid, isTouched, isDirty },
+            formState: { touchedFields, dirtyFields }
+          } = useController({
+            name,
+            control,
+            rules: { required: true },
+          });
+        
         
     return (    
         <Box className="m-7 mx-auto">
             <h2 className='font-bold text-2xl'>Billing Information</h2>
-            <AddressInfo 
-                type="billingaddress"
-                values={values}
-                errors={errors}
-                touched={touched}
-                handleBlur={handleBlur}
-                handleChange={handleChange}
-            />
-            <Box mb="20px">
+            <Box
+                className='w-full md:w-[80%] grid gap-3 mt-4 md:grid-cols-4 grid-cols-2'
+            >
+                <Controller 
+                    render={({ field }) => (<TextField
+                    className='grid col-span-2'
+                    fullWidth
+                    type="text"
+                    label="First Name"
+                    onBlur={field.onBlur}
+                    onChange={field.onChange}
+                    value={field.value}
+                     {...field} /> )}
+                    name="firstname"
+                    control={control}
+                />
+                <Controller 
+                    render={({ field }) => (<TextField
+                    className='grid col-span-2'
+                    fullWidth
+                    type="text"
+                    label="Last Name"
+                    onBlur={field.onBlur}
+                    onChange={field.onChange}
+                    value={field.value}
+                     {...field} /> )}
+                    name="lastname"
+                    control={control}
+                />
+                
+            </Box>
+            {/* <Box mb="20px">
                 <FormControlLabel
                     label="Same for Shipping Address"
                     control={
@@ -48,7 +79,7 @@ function Shipping({
                         setFieldValue={setFieldValue} 
                     />
                 </Box>
-            )}
+            )} */}
         </Box>
     )
     }

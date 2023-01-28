@@ -7,6 +7,7 @@ import Payment from './Payment';
 import { loadStripe } from "@stripe/stripe-js";
 import { useSelector } from 'react-redux';
 import { selectBasketItems } from '../../../redux/store';
+import { useForm, Controller } from "react-hook-form";
 
 
 
@@ -67,10 +68,10 @@ function Checkout() {
 
 }
 
-const formik = useFormik({
-  initialValues :  {
+const { handleSubmit, control, reset } = useForm({
+  defaultValues: {
     billingaddress: {
-      firstname : "" ,
+      firstname : "Visakh" ,
       lastname : " " ,
       country : " " ,
       street1 : " " ,
@@ -93,96 +94,11 @@ const formik = useFormik({
 
     email : " ",
     Phonenumber : " ",
-  },
-
-  onSubmit : values => {
-    handleformsubmit(values)
   }, 
+});
 
-})
+const onSubmit = data => console.log(data);
 
-  const initialvalues = {
-    billingaddress: {
-      firstname : " " ,
-      lastname : " " ,
-      country : " " ,
-      street1 : " " ,
-      street2 : " " ,
-      city : " " ,
-      state : " " ,
-      postcode : " " ,
-    },
-    shippingaddress: {
-      issameaddress : true,
-      firstname : " " ,
-      lastname : " " ,
-      country : " " ,
-      street1 : " " ,
-      street2 : " " ,
-      city : " " ,
-      state : " " ,
-      postcode : " " ,
-    },
-
-    email : " ",
-    Phonenumber : " ",
-  }
-
-  const checkoutSchema = [
-    Yup.object().shape({
-      billingaddress : Yup.object().shape({
-        firstname : Yup.string().required("Required"),
-        lastname : Yup.string().required("Required"),
-        country : Yup.string().required("Required"),
-        street1 : Yup.string().required("Required"),
-        street2 : Yup.string(),
-        city : Yup.string().required("Required"),
-        state : Yup.string().required("Required"),
-        postcode : Yup.string().required("Required"),
-      }),
-      shippingaddress : Yup.object().shape({
-        isSameAddress: Yup.boolean(),
-        firstname : Yup.string().when("isSameAddress", {
-            is : false , 
-            then : Yup.string().required("Required")
-        }),
-        lastname : Yup.string().when("isSameAddress", {
-            is : false , 
-            then : Yup.string().required("Required")
-        }),
-        country : Yup.string().when("isSameAddress", {
-            is : false , 
-            then : Yup.string().required("Required")
-        }),
-        street1 : Yup.string().when("isSameAddress", {
-            is : false , 
-            then : Yup.string().required("Required")
-        }),
-        street2 : Yup.string().when("isSameAddress", {
-            is : false , 
-            then : Yup.string()
-        }),
-        city : Yup.string().when("isSameAddress", {
-          is : false , 
-          then : Yup.string().required("Required")
-      }),
-        state : Yup.string().when("isSameAddress", {
-          is : false , 
-          then : Yup.string().required("Required")
-      }),
-        postcode : Yup.string().when("isSameAddress", {
-          is : false , 
-          then : Yup.string().required("Required")
-      }),
-      
-      
-    })
-    }),
-    Yup.object().shape({
-        email : Yup.string().email("Invalid email").required("required"),
-        Phonenumber: Yup.string().required("required"),
-    }),
-  ];
 
   return (
 
@@ -196,23 +112,15 @@ const formik = useFormik({
         </Step>
       </Stepper>
       <Box>
-        {/* <Formik 
-          onSubmit={handleformsubmit}
-          initialValues={initialvalues}
-          validationSchema={checkoutSchema[activeStep]}
-        > */}
-            <form onSubmit={formik.handleSubmit}>
-              {isbillingstate && (
+
+            <form onSubmit={handleSubmit(onSubmit)}>
+            {isbillingstate && (
                 <Shipping 
-                  values={formik.values}
-                  errors={formik.errors}
-                  touched={formik.touched}
-                  handleBlur={formik.handleBlur}
-                  handleChange={formik.handleChange}
-                  setFieldValue={formik.setFieldValue}
+                  control={control}
                 />
               )}
-              {ispaymentstate && (
+              
+              {/* {ispaymentstate && (
                 <Payment
                   values={formik.values}
                   errors={formik.errors}
@@ -221,7 +129,7 @@ const formik = useFormik({
                   handleChange={formik.handleChange}
                   setFieldValue={formik.setFieldValue} 
                 />
-              )}
+              )} */}
               <Box className='flex justify-between gap-8'>
                 {!isbillingstate && (
                   <Button 
