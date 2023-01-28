@@ -26,7 +26,7 @@ function Payment({
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.email}
-                name={"Email"}
+                name={"email"}
                 error={!!touched.email && !!errors.email} 
                 helperText={touched.email && errors.email}
             />

@@ -1,5 +1,5 @@
 import { Box, TextField } from '@mui/material'
-import { getIn } from 'formik'
+import { Formik, getIn } from 'formik'
 import React from 'react'
 import { boolean } from 'yup/lib/locale'
 
@@ -12,22 +12,19 @@ function AddressInfo({
     touched,
     handleBlur,
     handleChange,
-    setFieldValue,
 }) {
 
-    const formattedName = (field) => {
-      return  `${type}.${field}`
-    }
+    // const formattedName = (field) => `${type}.${field}`;
 
-    const formattedError = (field) => 
+    // const formattedError = (field) => 
 
-        Boolean(
-            getIn(touched, formattedName(field)) && 
-            getIn(errors, formattedName(field))
-        )
+    //     Boolean(
+    //         getIn(touched, formattedName(field)) && 
+    //         getIn(errors, formattedName(field))
+    //     )
 
-    const formattedHelper = (field) =>
-         getIn(touched, formattedName(field)) && getIn(errors, formattedName(field));
+    // const formattedHelper = (field) =>
+    //      getIn(touched, formattedName(field)) && getIn(errors, formattedName(field));
 
                 
   return (
@@ -41,10 +38,10 @@ function AddressInfo({
             label="First Name"
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.firstname}
-            name={formattedName("firstName")}
-            error={formattedError("firstName")}
-            helperText={formattedHelper("firstName")}
+            value={values.billingaddress.firstname}
+            name={"firstName"}
+            error={"firstName"}
+            helperText={"firstName"}
         />
         <TextField 
             className='grid col-span-2'
@@ -53,10 +50,10 @@ function AddressInfo({
             label="Last Name"
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.lastname}
-            name={formattedName("LastName")}
-            error={formattedError("LastName")}
-            helperText={formattedHelper("LastName")}
+            value={values.billingaddress.lastname}
+            name={"LastName"}
+            error={"LastName"}
+            helperText={"LastName"}
         />
         <TextField 
             className='grid col-span-4'
@@ -65,10 +62,10 @@ function AddressInfo({
             label="Country"
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.country}
-            name={formattedName("Country")}
-            error={formattedError("Country")}
-            helperText={formattedHelper("Country")}
+            value={values.billingaddress.country}
+            name={"Country"}
+            error={"Country"}
+            helperText={"Country"}
         />
         <TextField 
             className='grid col-span-2'
@@ -77,10 +74,10 @@ function AddressInfo({
             label="Street 1"
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.street1}
-            name={formattedName("Street1")}
-            error={formattedError("Street1")}
-            helperText={formattedHelper("Street1")}
+            value={values.billingaddress.street1}
+            name={"Street1"}
+            error={"Street1"}
+            helperText={"Street1"}
         />
         <TextField 
             className='grid col-span-2'
@@ -89,10 +86,10 @@ function AddressInfo({
             label="Street 2"
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.street2}
-            name={formattedName("Street2")}
-            error={formattedError("Street2")}
-            helperText={formattedHelper("Street2")}
+            value={values.billingaddress.street2}
+            name={"Street2"}
+            error={"Street2"}
+            helperText={"Street2"}
         />
         <TextField 
             className='grid col-span-2'
@@ -101,22 +98,22 @@ function AddressInfo({
             label="City"
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.city}
-            name={formattedName("City")}
-            error={formattedError("City")}
-            helperText={formattedHelper("City")}
+            value={values.billingaddress.city}
+            name={"City"}
+            error={"City"}
+            helperText={"City"}
         />
         <TextField 
             className='grid col-span-2'
             fullWidth
             type="text"
-            label="state"
+            label="State"
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.state}
-            name={formattedName("State")}
-            error={formattedError("State")}
-            helperText={formattedHelper("State")}
+            value={values.billingaddress.state}
+            name={"State"}
+            error={"State"}
+            helperText={"State"}
         />
         <TextField 
             className='grid col-span-2'
@@ -125,10 +122,10 @@ function AddressInfo({
             label="Zip Code"
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.zipcode}
-            name={formattedName("Zipcode")}
-            error={formattedError("Zipcode")}
-            helperText={formattedHelper("Zipcode")}
+            value={values.billingaddress.postcode}
+            name={"Zipcode"}
+            error={"Zipcode"}
+            helperText={"Zipcode"}
         />
 
     </Box>

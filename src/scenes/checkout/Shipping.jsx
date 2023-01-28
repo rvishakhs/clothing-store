@@ -14,13 +14,12 @@ function Shipping({
         <Box className="m-7 mx-auto">
             <h2 className='font-bold text-2xl'>Billing Information</h2>
             <AddressInfo 
-                type="Address"
-                values={values.billingaddress}
+                type="billingaddress"
+                values={values}
                 errors={errors}
                 touched={touched}
                 handleBlur={handleBlur}
                 handleChange={handleChange}
-                setFieldValue={setFieldValue} 
             />
             <Box mb="20px">
                 <FormControlLabel
@@ -41,7 +40,7 @@ function Shipping({
                 <Box className=''>
                     <AddressInfo 
                         type="Address"
-                        values={values.billingaddress}
+                        values={values}
                         errors={errors}
                         touched={touched}
                         handleBlur={handleBlur}
