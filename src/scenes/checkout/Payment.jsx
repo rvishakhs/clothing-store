@@ -1,14 +1,10 @@
 import { Box, TextField } from '@mui/material'
 import React from 'react'
+import { Controller, useController, useForm } from "react-hook-form";
 
 function Payment({
-    values,
-    type,
-    errors,
-    touched,
-    handleBlur,
-    handleChange,
-    setFieldValue,
+    control,
+    error
 }) {
   return (
 
@@ -18,30 +14,32 @@ function Payment({
             className='w-full md:w-[50%] grid gap-3 my-4 md:grid-cols-4 grid-cols-2'
         >
             
-            <TextField 
-                className='grid col-span-4'
-                fullWidth
-                type="text"
-                label="Email Id"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.email}
-                name={"email"}
-                error={!!touched.email && !!errors.email} 
-                helperText={touched.email && errors.email}
-            />
-            <TextField 
-                className='grid col-span-4'
-                fullWidth
-                type="text"
-                label="Phone Number"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.Phonenumber}
-                name={"Phonenumber"}
-                error={!!touched.Phonenumber && !!errors.Phonenumber}
-                helperText={touched.Phonenumber && errors.Phonenumber}
-            />
+            <Controller 
+            render={({ field }) => (<TextField
+            className='grid col-span-2'
+            fullWidth
+            type="text"
+            label="First Name"
+            onBlur={field.onBlur}
+            onChange={field.onChange}
+            value={field.value}
+            {...field} /> )}
+            name="firstname"
+            control={control}
+        />
+        <Controller 
+            render={({ field }) => (<TextField
+            className='grid col-span-2'
+            fullWidth
+            type="text"
+            label="Last Name"
+            onBlur={field.onBlur}
+            onChange={field.onChange}
+            value={field.value}
+            {...field} /> )}
+            name="lastname"
+            control={control}
+        />
         </Box>
     </Box>
   )

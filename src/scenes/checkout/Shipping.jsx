@@ -5,6 +5,7 @@ import AddressInfo from './AddressInfo'
 
 function Shipping({ 
         control,
+        errors
     }){
 
      const {
@@ -21,37 +22,10 @@ function Shipping({
     return (    
         <Box className="m-7 mx-auto">
             <h2 className='font-bold text-2xl'>Billing Information</h2>
-            <Box
-                className='w-full md:w-[80%] grid gap-3 mt-4 md:grid-cols-4 grid-cols-2'
-            >
-                <Controller 
-                    render={({ field }) => (<TextField
-                    className='grid col-span-2'
-                    fullWidth
-                    type="text"
-                    label="First Name"
-                    onBlur={field.onBlur}
-                    onChange={field.onChange}
-                    value={field.value}
-                     {...field} /> )}
-                    name="firstname"
-                    control={control}
-                />
-                <Controller 
-                    render={({ field }) => (<TextField
-                    className='grid col-span-2'
-                    fullWidth
-                    type="text"
-                    label="Last Name"
-                    onBlur={field.onBlur}
-                    onChange={field.onChange}
-                    value={field.value}
-                     {...field} /> )}
-                    name="lastname"
-                    control={control}
-                />
-                
-            </Box>
+            <AddressInfo 
+                control={control}  
+                errors={errors}              
+            />
             {/* <Box mb="20px">
                 <FormControlLabel
                     label="Same for Shipping Address"

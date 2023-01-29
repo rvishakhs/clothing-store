@@ -1,19 +1,25 @@
 import { Box, TextField } from '@mui/material'
 import { Formik, getIn } from 'formik'
 import React from 'react'
+import { Controller, useController, useForm } from "react-hook-form";
 import { boolean } from 'yup/lib/locale'
 
 
 
 function AddressInfo({
-    values,
-    type,
-    errors,
-    touched,
-    handleBlur,
-    handleChange,
+    control,
+    errors
 }) {
 
+    const {
+        field,
+        fieldState: { invalid, isTouched, isDirty },
+        formState: { touchedFields, dirtyFields }
+      } = useController({
+        name,
+        control,
+        rules: { required: true },
+      });
 
 
                 
@@ -21,102 +27,117 @@ function AddressInfo({
     <Box
         className='w-full md:w-[80%] grid gap-3 mt-4 md:grid-cols-4 grid-cols-2'
     >
-        <TextField 
+
+        <Controller 
+            render={({ field }) => (<TextField
             className='grid col-span-2'
             fullWidth
             type="text"
             label="First Name"
-            onBlur={handleBlur}
-            onChange={handleChange}
-            value={values.billingaddress.firstname}
-            name={"firstName"}
-            error={!!touched.firstname && !!errors.firstname }
-            helperText={touched.firstname && errors.firstname}
+            onBlur={field.onBlur}
+            onChange={field.onChange}
+            value={field.value}
+            {...field} /> )}
+            name="firstname"
+            control={control}
+
         />
-        <TextField 
+        <Controller 
+            render={({ field }) => (<TextField
             className='grid col-span-2'
             fullWidth
             type="text"
             label="Last Name"
-            onBlur={handleBlur}
-            onChange={handleChange}
-            value={values.lastname}
-            name={"LastName"}
-            error={!!touched.lastname && !!errors.lastname}
-            helperText={touched.lastname && errors.lastname}
+            onBlur={field.onBlur}
+            onChange={field.onChange}
+            value={field.value}
+            error={field.error}
+            {...field} /> )}
+            name="lastname"
+            control={control}
         />
-        <TextField 
+        <Controller 
+            render={({ field }) => (<TextField
             className='grid col-span-4'
             fullWidth
             type="text"
             label="Country"
-            onBlur={handleBlur}
-            onChange={handleChange}
-            value={values.country}
-            name={"Country"}
-            error={!!touched.country && !!errors.country}
-            helperText={touched.country && errors.country}
+            onBlur={field.onBlur}
+            onChange={field.onChange}
+            error={field.error}
+            value={field.value}
+            {...field} /> )}
+            name="country"
+            control={control}
         />
-        <TextField 
+
+        <Controller 
+            render={({ field }) => (<TextField
             className='grid col-span-2'
             fullWidth
             type="text"
             label="Street 1"
-            onBlur={handleBlur}
-            onChange={handleChange}
-            value={values.street1}
-            name={"Street1"}
-            error={!!touched.street1 && !!errors.street1}
-            helperText={touched.street1 && errors.street1}
+            onBlur={field.onBlur}
+            onChange={field.onChange}
+            value={field.value}
+            error={field.error}
+            {...field} /> )}
+            name="street1"
+            control={control}
         />
-        <TextField 
+        <Controller 
+            render={({ field }) => (<TextField
             className='grid col-span-2'
             fullWidth
             type="text"
             label="Street 2"
-            onBlur={handleBlur}
-            onChange={handleChange}
-            value={values.street2}
-            name={"Street2"}
-            error={!!touched.street2 && !!errors.street2}
-            helperText={touched.street2 && errors.street2}
+            onBlur={field.onBlur}
+            onChange={field.onChange}
+            value={field.value}
+            {...field} /> )}
+            name="street2"
+            control={control}
         />
-        <TextField 
+        <Controller 
+            render={({ field }) => (<TextField
             className='grid col-span-2'
             fullWidth
             type="text"
-            label="City"
-            onBlur={handleBlur}
-            onChange={handleChange}
-            value={values.city}
-            name={"City"}
-            error={!!touched.city && !!errors.city}
-            helperText={touched.city && errors.city}
+            label="city"
+            onBlur={field.onBlur}
+            onChange={field.onChange}
+            value={field.value}
+            {...field} /> )}
+            name="city"
+            control={control}
         />
-        <TextField 
+        <Controller 
+            render={({ field }) => (<TextField
             className='grid col-span-2'
             fullWidth
             type="text"
-            label="State"
-            onBlur={handleBlur}
-            onChange={handleChange}
-            value={values.state}
-            name={"State"}
-            error={!!touched.state && !!errors.state}
-            helperText={touched.state && errors.state}
+            label="state"
+            onBlur={field.onBlur}
+            onChange={field.onChange}
+            value={field.value}
+            {...field} /> )}
+            name="state"
+            control={control}
         />
-        <TextField 
+        <Controller 
+            render={({ field }) => (<TextField
             className='grid col-span-2'
             fullWidth
             type="text"
-            label="Zip Code"
-            onBlur={handleBlur}
-            onChange={handleChange}
-            value={values.postcode}
-            name={"Zipcode"}
-            error={!!touched.postcode && !!errors.postcode}
-            helperText={touched.postcode && errors.postcode}
+            label="zipcode"
+            onBlur={field.onBlur}
+            onChange={field.onChange}
+            value={field.value}
+            {...field} /> )}
+            name="postcode"
+            control={control}
         />
+
 
     </Box>
   )
