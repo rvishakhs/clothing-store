@@ -19,12 +19,12 @@ function Payment({
             className='grid col-span-2'
             fullWidth
             type="text"
-            label="First Name"
+            label="Email Id"
             onBlur={field.onBlur}
             onChange={field.onChange}
             value={field.value}
             {...field} /> )}
-            name="firstname"
+            name="email"
             control={control}
         />
         <Controller 
@@ -32,12 +32,12 @@ function Payment({
             className='grid col-span-2'
             fullWidth
             type="text"
-            label="Last Name"
+            label="Phone Number"
             onBlur={field.onBlur}
             onChange={field.onChange}
             value={field.value}
             {...field} /> )}
-            name="lastname"
+            name="[phonenumber"
             control={control}
         />
         </Box>

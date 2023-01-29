@@ -8,7 +8,8 @@ import { boolean } from 'yup/lib/locale'
 
 function AddressInfo({
     control,
-    errors
+    errors,
+    register
 }) {
 
     const {
@@ -29,19 +30,23 @@ function AddressInfo({
     >
 
         <Controller 
-            render={({ field }) => (<TextField
+            render={({ field, fieldState }) => (<TextField
             className='grid col-span-2'
             fullWidth
+            required
             type="text"
             label="First Name"
             onBlur={field.onBlur}
             onChange={field.onChange}
-            value={field.value}
-            {...field} /> )}
+            value={field.value} 
+            {...register('firstName', { required: true })}
+            {...field} />
+            )}
             name="firstname"
             control={control}
-
+            rules={{ required: true }}
         />
+
         <Controller 
             render={({ field }) => (<TextField
             className='grid col-span-2'
@@ -52,20 +57,22 @@ function AddressInfo({
             onChange={field.onChange}
             value={field.value}
             error={field.error}
+            required={field.required}
             {...field} /> )}
             name="lastname"
             control={control}
         />
         <Controller 
-            render={({ field }) => (<TextField
+            render={({ field, fieldState }) => (<TextField
             className='grid col-span-4'
             fullWidth
             type="text"
             label="Country"
             onBlur={field.onBlur}
             onChange={field.onChange}
-            error={field.error}
+            error={fieldState.error}
             value={field.value}
+            inputRef={field.ref}
             {...field} /> )}
             name="country"
             control={control}
@@ -110,6 +117,7 @@ function AddressInfo({
             {...field} /> )}
             name="city"
             control={control}
+            rules={{ required: true }}
         />
         <Controller 
             render={({ field }) => (<TextField

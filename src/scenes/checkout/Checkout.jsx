@@ -24,11 +24,8 @@ function Checkout() {
   const ispaymentstate = activeStep === 1
   const cart = useSelector(selectBasketItems)
 
+
   const handleformsubmit = (values) => {
-    setActiveStep(activeStep + 1)
-
-
-    
   }
 
 
@@ -59,8 +56,8 @@ function Checkout() {
 
 }
 
-  const schema = yup.object({
-    firstname : yup.string().required("Required"),
+  const schema = yup.object().shape({
+      firstname : yup.string().required("Required"),
       lastname : yup.string().required("Required"),
       country : yup.string().required("Required"),
       street1 : yup.string().required("Required"),
@@ -68,9 +65,9 @@ function Checkout() {
       city : yup.string().required("Required"),
       state : yup.string().required("Required"),
       postcode : yup.string().required("Required"),      
-    }).required("Required")
+    });
 
-const { handleSubmit, control, reset, formState:{ errors } } = useForm({
+const { handleSubmit, register, control, reset, getValues, formState:{ errors } } = useForm({
   resolver : yupResolver(schema),
   defaultValues: {
     firstname : " ",
@@ -81,10 +78,16 @@ const { handleSubmit, control, reset, formState:{ errors } } = useForm({
     city : " " ,
     state : " " ,
     postcode : " " ,
+    email : " ",
+    phonenumber : " ",
   } 
 });
 
-const onSubmit = data => handleformsubmit(data);
+console.log("errors", errors);
+
+
+
+const onSubmit = data => console.log(data);
 
 
   return (
@@ -105,7 +108,8 @@ const onSubmit = data => handleformsubmit(data);
                 <Shipping 
                   control={control}
                   error={errors}
-
+                  register={register}
+                  getValues={getValues}
                 />
               )}
               
