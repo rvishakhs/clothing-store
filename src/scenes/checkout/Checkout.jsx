@@ -26,14 +26,22 @@ function Checkout() {
 
 
   const handleformsubmit = (values) => {
+    setActiveStep(activeStep + 1)
+
+    
+
+    if(ispaymentstate) {
+      makePayment()
+    }
+
   }
 
 
-  async function makePayment(values) {
+  async function makePayment() {
     const stripe = await stripePromise;
     const requestBody = {
-      userName : [values.firstname, values.lastname].join(" "),
-      email: [values.email],
+      userName : [getValues().firstname, getValues().lastname].join(" "),
+      email: [getValues().email],
       products : cart.Map(({id, count}) => ({
         id, count,
       }))
@@ -87,7 +95,7 @@ console.log("errors", errors);
 
 
 
-const onSubmit = data => console.log(data);
+const onSubmit = data => handleformsubmit(data)
 
 
   return (

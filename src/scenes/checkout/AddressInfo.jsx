@@ -32,41 +32,45 @@ function AddressInfo({
     >
 
         <Controller 
-            render={({ field, fieldState }) => (<TextField
-            className='grid col-span-2'
-            fullWidth
-            required
-            type="text"
-            label="First Name"
-            onBlur={field.onBlur}
-            onChange={field.onChange}
-            value={field.value} 
-            {...register('firstName', { required: true })}
-            {...field} />
+            render={({ field, fieldState }) => (
+            <TextField
+                className='grid col-span-2'
+                fullWidth
+                required
+                type="text"
+                label="First Name"
+                onBlur={field.onBlur}
+                onChange={field.onChange}
+                value={field.value} 
+                {...register('firstName', { required: true })}
+                {...field} 
+            />
             )}
             name="firstname"
             control={control}
         />
 
         <Controller 
-            render={({ field }) => (<TextField
-            className='grid col-span-2'
-            fullWidth
-            type="text"
-            label="Last Name"
-            onBlur={field.onBlur}
-            onChange={field.onChange}
-            value={field.value}
-            error={field.error}
-            required={field.required}
-            {...field} /> )}
-            name="lastname"
-            control={control}
-        />
+            render={({ field }) => (
+            <TextField
+                className='grid col-span-2'
+                fullWidth
+                required
+                type="text"
+                label="Last Name"
+                onBlur={field.onBlur}
+                onChange={field.onChange}
+                value={field.value}
+                error={field.error}
+                {...field} /> )}
+                name="lastname"
+                control={control}
+            />
         <Controller 
             render={({ field, fieldState }) => (<TextField
             className='grid col-span-4'
             fullWidth
+            required
             type="text"
             label="Country"
             onBlur={field.onBlur}
@@ -78,11 +82,11 @@ function AddressInfo({
             name="country"
             control={control}
         />
-
         <Controller 
             render={({ field }) => (<TextField
             className='grid col-span-2'
             fullWidth
+            required
             type="text"
             label="Street 1"
             onBlur={field.onBlur}
@@ -105,15 +109,15 @@ function AddressInfo({
             value={field.value}
             {...field} /> )}
             name="street2"
-            control={control}
-            
+            control={control}            
         />
         <Controller 
             render={({ field }) => (<TextField
             className='grid col-span-2'
             fullWidth
+            required
             type="text"
-            label="city"
+            label="City"
             onBlur={field.onBlur}
             onChange={field.onChange}
             value={field.value}
@@ -126,8 +130,9 @@ function AddressInfo({
             render={({ field }) => (<TextField
             className='grid col-span-2'
             fullWidth
+            required
             type="text"
-            label="state"
+            label="State"
             onBlur={field.onBlur}
             onChange={field.onChange}
             value={field.value}
@@ -139,8 +144,9 @@ function AddressInfo({
             render={({ field }) => (<TextField
             className='grid col-span-2'
             fullWidth
+            required
             type="text"
-            label="zipcode"
+            label="Zipcode"
             onBlur={field.onBlur}
             onChange={field.onChange}
             value={field.value}
@@ -148,8 +154,6 @@ function AddressInfo({
             name="postcode"
             control={control}
         />
-
-
     </Box>
   )
 }
