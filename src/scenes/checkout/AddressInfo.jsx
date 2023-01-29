@@ -12,6 +12,8 @@ function AddressInfo({
     register
 }) {
 
+
+    console.log(errors);
     const {
         field,
         fieldState: { invalid, isTouched, isDirty },
@@ -44,7 +46,6 @@ function AddressInfo({
             )}
             name="firstname"
             control={control}
-            rules={{ required: true }}
         />
 
         <Controller 
@@ -93,17 +94,19 @@ function AddressInfo({
             control={control}
         />
         <Controller 
-            render={({ field }) => (<TextField
+            render={({ field, fieldState }) => (<TextField
             className='grid col-span-2'
             fullWidth
             type="text"
             label="Street 2"
             onBlur={field.onBlur}
             onChange={field.onChange}
+            error={fieldState.errorMessage}
             value={field.value}
             {...field} /> )}
             name="street2"
             control={control}
+            
         />
         <Controller 
             render={({ field }) => (<TextField

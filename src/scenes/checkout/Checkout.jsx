@@ -67,7 +67,7 @@ function Checkout() {
       postcode : yup.string().required("Required"),      
     });
 
-const { handleSubmit, register, control, reset, getValues, formState:{ errors } } = useForm({
+const { handleSubmit, register, control, reset, getValues, errors } = useForm({
   resolver : yupResolver(schema),
   defaultValues: {
     firstname : " ",
