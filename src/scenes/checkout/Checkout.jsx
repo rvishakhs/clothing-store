@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { selectBasketItems } from '../../../redux/store';
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { fetchPostJSON } from '../../../utils/getstripe';
 
 
 
@@ -40,27 +41,39 @@ function Checkout() {
   async function makePayment() {
     const stripe = await stripePromise;
     const requestBody = {
-      userName : [getValues().firstname, getValues().lastname].join(" "),
-      email: [getValues().email],
-      products : cart.map(({id, count}) => ({
-        id, count,
-      }))
+      "data" : {
+        userName : [getValues().firstname, getValues().lastname].join(" "),
+        email: [getValues().email],
+        products : cart.map(({id, count }) => ({
+          id, count,
+        }))
+    } 
     };
+
+    const reviewObj  = {
+      "data" : {
+        "username" : getValues().firstname,
+        " email " : getValues().email
+
+      }
+    }
 
     console.log(getValues().firstname);
     console.log(getValues().lastname);
     console.log(getValues().email);
-    
-    const response = await fetch("http://localhost:1337/api/orders", {
-      method : "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(requestBody),
-    })
-    
-    const session = await response.json();
+
+    const response = await fetchPostJSON(
+      "http://localhost:1337/api/orders",
+      reviewObj
+     )    
+
+     if((response).statusCode === 500 ) {
+      console.error((response).message);
+      return
+     }
 
     await stripe.redirectToCheckout({
-      sessionId: session.id
+      sessionId: response.id
     });
 
     console.warn(error.message);
