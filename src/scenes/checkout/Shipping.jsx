@@ -11,7 +11,6 @@ function Shipping({
     
     const [shippingaddress, setshippingaddress] = useState(true)
 
-    console.log(shippingaddress);
 
 
      const {

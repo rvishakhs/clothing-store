@@ -13,7 +13,6 @@ function AddressInfo({
 }) {
 
 
-    console.log(errors);
     const {
         field,
         fieldState: { invalid, isTouched, isDirty },

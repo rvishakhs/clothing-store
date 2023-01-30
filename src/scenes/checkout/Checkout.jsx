@@ -42,12 +42,16 @@ function Checkout() {
     const requestBody = {
       userName : [getValues().firstname, getValues().lastname].join(" "),
       email: [getValues().email],
-      products : cart.Map(({id, count}) => ({
+      products : cart.map(({id, count}) => ({
         id, count,
       }))
     };
 
-    const response = await fetch("http://localhost:2000/api/orders", {
+    console.log(getValues().firstname);
+    console.log(getValues().lastname);
+    console.log(getValues().email);
+    
+    const response = await fetch("http://localhost:1337/api/orders", {
       method : "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestBody),
@@ -55,14 +59,16 @@ function Checkout() {
     
     const session = await response.json();
 
-    const {error} = await stripe.redirectToCheckout({
+    await stripe.redirectToCheckout({
       sessionId: session.id
     });
 
     console.warn(error.message);
     console.log(error.message);
 
+
 }
+
 
   const schema = yup.object().shape({
       firstname : yup.string().required("Required"),
@@ -91,7 +97,7 @@ const { handleSubmit, register, control, reset, getValues, errors } = useForm({
   } 
 });
 
-console.log("errors", errors);
+
 
 
 
