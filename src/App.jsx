@@ -9,6 +9,7 @@ import Header from "../components/Header"
 import Cartmenu from './scenes/global/Cartmenu';
 import Itemdetails from './scenes/itemdetails/Itemdetails';
 import Footer from './scenes/global/Footer';
+import Success from './scenes/checkout/success';
 function App() {
 
   const scrollToUp = () => {
@@ -31,6 +32,7 @@ function App() {
             <Route path='/' element={<Home />}/>
             <Route path='item/:itemid' element={<Itemdetails />}/>
             <Route path='/checkout' element={<Checkout />}/>
+            <Route path='/checkout/sucess' element={<Success />}/>
           </Routes>
           <Cartmenu />
           <Footer />

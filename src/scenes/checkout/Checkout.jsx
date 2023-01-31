@@ -12,7 +12,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { fetchPostJSON } from '../../../utils/getstripe';
 
 
-
 function Checkout() {
 
 
@@ -41,39 +40,30 @@ function Checkout() {
   async function makePayment() {
     const stripe = await stripePromise;
     const requestBody = {
-      "data" : {
         userName : [getValues().firstname, getValues().lastname].join(" "),
         email: [getValues().email],
         products : cart.map(({id, count }) => ({
           id, count,
-        }))
-    } 
+        }))     
     };
 
-    const reviewObj  = {
-      "data" : {
-        "username" : getValues().firstname,
-        " email " : getValues().email
-
-      }
-    }
 
     console.log(getValues().firstname);
     console.log(getValues().lastname);
     console.log(getValues().email);
 
-    const response = await fetchPostJSON(
-      "http://localhost:1337/api/orders",
-      reviewObj
-     )    
+    const response = await fetch("http://localhost:1337/api/orders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestBody),
+    });
 
-     if((response).statusCode === 500 ) {
-      console.error((response).message);
-      return
-     }
+
+
+     const session = await response.json();
 
     await stripe.redirectToCheckout({
-      sessionId: response.id
+      sessionId: session.id
     });
 
     console.warn(error.message);

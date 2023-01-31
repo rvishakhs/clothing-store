@@ -1,4 +1,4 @@
-export async function fetchPostJSON(url, data) {
+export async function fetchPostJSON(url, {data}) {
     try {
       // Default options are marked with *
       const response = await fetch(url, {
