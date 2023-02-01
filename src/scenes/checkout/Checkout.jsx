@@ -25,7 +25,7 @@ function Checkout() {
   const cart = useSelector(selectBasketItems)
 
 
-  const handleformsubmit = (values) => {
+  const handleformsubmit = (data) => {
     setActiveStep(activeStep + 1)
 
     
@@ -48,6 +48,16 @@ function Checkout() {
     };
 
 
+    const Data = {
+      "data" : {
+        "username" : getValues().firstname,
+        "email" : getValues().email,
+        "products" :  cart.map(({id, count }) => ({
+          id, count,
+        }))   
+      }
+    }
+
     console.log(getValues().firstname);
     console.log(getValues().lastname);
     console.log(getValues().email);
@@ -55,12 +65,12 @@ function Checkout() {
     const response = await fetch("http://localhost:1337/api/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(requestBody),
+      body: JSON.stringify(Data),
     });
 
     const session = await response.json();
 
-    await stripe.redirectToCheckout({
+    const {error} = await stripe.redirectToCheckout({
       sessionId : session.id,
     });
 
