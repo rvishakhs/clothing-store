@@ -40,11 +40,11 @@ function Checkout() {
   async function makePayment() {
     const stripe = await stripePromise;
     const requestBody = {
-        userName : [getValues().firstname, getValues().lastname].join(" "),
-        email: [getValues().email],
-        products : cart.map(({id, count }) => ({
-          id, count,
-        }))     
+          userName : [getValues().firstname, getValues().lastname].join(" "),
+          email: [getValues().email],
+          products : cart.map(({id, count }) => ({
+            id, count,
+          }))   
     };
 
 
@@ -58,17 +58,14 @@ function Checkout() {
       body: JSON.stringify(requestBody),
     });
 
-
-
-     const session = await response.json();
+    const session = await response.json();
 
     await stripe.redirectToCheckout({
-      sessionId: session.id
+      sessionId : session.id,
     });
 
     console.warn(error.message);
     console.log(error.message);
-
 
 }
 
