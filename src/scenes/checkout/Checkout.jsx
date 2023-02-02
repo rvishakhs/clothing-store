@@ -12,71 +12,48 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { fetchPostJSON } from '../../../utils/getstripe';
 
 
+
 function Checkout() {
-
-
-  const stripePromise = loadStripe('pk_test_51LoYjSCzkqYRFFPL04LuA18faZFYCuyik4ozHHC9BOVy6RpTGTlQikWiKnReXndQ9DqQ3jZvRdHDCNUptFcjQciu005TC4JLKU');
-  
-  
 
   const [activeStep, setActiveStep] = useState(0)
   const isbillingstate = activeStep === 0
   const ispaymentstate = activeStep === 1
   const cart = useSelector(selectBasketItems)
 
+  const stripePromise = loadStripe('pk_test_51LoYjSCzkqYRFFPL04LuA18faZFYCuyik4ozHHC9BOVy6RpTGTlQikWiKnReXndQ9DqQ3jZvRdHDCNUptFcjQciu005TC4JLKU');
 
-  const handleformsubmit = (data) => {
+  const handleformsubmit = () => {
     setActiveStep(activeStep + 1)
 
-    
-
     if(ispaymentstate) {
-      makePayment()
+      try {
+       makePayment();
+
+      } catch (err) {
+        console.log(err);
+      }
     }
 
   }
 
-
   async function makePayment() {
     const stripe = await stripePromise;
-    const requestBody = {
-          userName : [getValues().firstname, getValues().lastname].join(" "),
-          email: [getValues().email],
-          products : cart.map(({id, count }) => ({
-            id, count,
-          }))   
-    };
 
-
-    const Data = {
-      "data" : {
-        "username" : getValues().firstname,
-        "email" : getValues().email,
-        "products" :  cart.map(({id, count }) => ({
-          id, count,
-        }))   
-      }
-    }
-
-    console.log(getValues().firstname);
-    console.log(getValues().lastname);
-    console.log(getValues().email);
+    // const firstname = (getValues().firstname);
+    // const email = (getValues().email);
 
     const response = await fetch("http://localhost:1337/api/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(Data),
+      body: JSON.stringify(cart),
+
     });
 
     const session = await response.json();
 
-    const {error} = await stripe.redirectToCheckout({
+    await stripe.redirectToCheckout({
       sessionId : session.id,
     });
-
-    console.warn(error.message);
-    console.log(error.message);
-
 }
 
 
@@ -111,7 +88,7 @@ const { handleSubmit, register, control, reset, getValues, errors } = useForm({
 
 
 
-const onSubmit = data => handleformsubmit(data)
+const onSubmit = data => handleformsubmit()
 
 
   return (
