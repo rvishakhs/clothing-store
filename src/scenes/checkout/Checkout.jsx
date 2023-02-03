@@ -10,6 +10,7 @@ import { selectBasketItems } from '../../../redux/store';
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { fetchPostJSON } from '../../../utils/getstripe';
+import { makeRequest } from '../../../utils/makeReqest';
 
 
 
@@ -42,17 +43,13 @@ function Checkout() {
     // const firstname = (getValues().firstname);
     // const email = (getValues().email);
 
-    const response = await fetch("http://localhost:1337/api/orders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(cart),
 
-    });
-
-    const session = await response.json();
+    const res = await makeRequest.post("/orders", {
+      cart
+    })
 
     await stripe.redirectToCheckout({
-      sessionId : session.id,
+      sessionId : res.data.stripeSession.id
     });
 }
 
