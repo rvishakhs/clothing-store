@@ -7,6 +7,7 @@ import ItemCard from "./ItemCard";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
+import axios from "axios";
 
 function ShoppingList() {
 
@@ -18,14 +19,35 @@ function ShoppingList() {
     setValue(newvalue)
   }
 
-  useEffect(() => {
-    async function datafetch () {
-      const itemsdata = await fetchitems()
-      dispatch(setitems(itemsdata));
+  useEffect(()=> {
+    const fetchData = async () => {
+      try{
+        const res = await axios.get(
+          "http://localhost:1337/api/items?populate=image",
+          {
+            Headers : {
+              Authorization : "bearer " + process.env.NODE_ENV.REACT_APP_API_TOKEN
+            } 
+          }
+        );
+        dispatch(setitems(res.data.data));
+        console.log(res)
+      } catch (err) {
+        console.log(err)
+      }
     }
 
-    datafetch()
+    fetchData();
   }, [])
+
+  // useEffect(() => {
+  //   async function datafetch () {
+  //     const itemsdata = await fetchitems()
+  //     dispatch(setitems(itemsdata));
+  //   }
+
+  //   datafetch()
+  // }, [])
 
   const trendingItems = items.filter((item) => item.attributes.category  === "trending")
   const offerzoneItems = items.filter((item) => item.attributes.category  === "offer zone")
