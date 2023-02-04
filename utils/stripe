@@ -1,0 +1,13 @@
+import { loadStripe} from "@stripe/stripe-js";
+
+// https://vercel.com/guides/getting-started-with-nextjs-typescript-stripe#loading-stripe.js
+// Singleton Pattern
+let stripePromise;
+const getStripe = () => {
+  if (!stripePromise) {
+    stripePromise = loadStripe("pk_test_51LoYjSCzkqYRFFPL04LuA18faZFYCuyik4ozHHC9BOVy6RpTGTlQikWiKnReXndQ9DqQ3jZvRdHDCNUptFcjQciu005TC4JLKU");
+  }
+  return stripePromise;
+};
+
+export default getStripe;

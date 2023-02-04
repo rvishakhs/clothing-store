@@ -10,7 +10,7 @@ import { selectBasketItems } from '../../../redux/store';
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { fetchPostJSON } from '../../../utils/getstripe';
-import { makeRequest } from '../../../utils/makeReqest';
+import getStripe from '../../../utils/stripe';
 
 
 
@@ -38,20 +38,58 @@ function Checkout() {
   }
 
   async function makePayment() {
-    const stripe = await stripePromise;
+    // const requestBody = {
+    //   userName: "visakh",
+    //   email: "rvishakhs@gmail.com",
+    //   products: cart.map(({ id, count }) => ({
+    //     id,
+    //     count,
+    //   })),
+    // };
+
+
+    const checkoutSession = await fetchPostJSON(
+      "http://localhost:1337/api/orders",
+      { 
+          items : cart
+      }
+  );
 
     // const firstname = (getValues().firstname);
     // const email = (getValues().email);
 
 
-    const res = await makeRequest.post("/orders", {
-      cart
-    })
+    // const response = await fetch("http://localhost:1337/api/orders", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(requestBody),
+    // });
 
-    await stripe.redirectToCheckout({
-      sessionId : res.data.stripeSession.id
-    });
-}
+
+    if ((checkoutSession).statusCode === 500) {
+      console.error((checkoutSession).message);
+      return 
+  }
+
+  // Redirect to checkput
+  const stripe = await getStripe();
+  const { error } = await stripe.redirectToCheckout({
+  // Make the id field from the Checkout Session creation API response
+  // available to this file, so you can provide it as parameter here
+  // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+  sessionId: checkoutSession.id,
+  });
+  // If `redirectToCheckout` fails due to a browser or network
+  // error, display the localized error message to your customer
+  // using `error.message`.
+  console.warn(error.message);
+  console.log(error.message);
+
+    // const session = await response.json();
+    // await stripe.redirectToCheckout({
+    //   sessionId: response.data.session.Id,
+    // });
+  }
 
 
   const schema = yup.object().shape({
