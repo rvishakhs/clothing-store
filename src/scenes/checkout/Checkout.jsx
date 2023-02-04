@@ -11,6 +11,7 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { fetchPostJSON } from '../../../utils/getstripe';
 import getStripe from '../../../utils/stripe';
+import { makeRequest } from '../../../utils/makeReqest';
 
 
 
@@ -27,68 +28,31 @@ function Checkout() {
     setActiveStep(activeStep + 1)
 
     if(ispaymentstate) {
-      try {
-       makePayment();
-
-      } catch (err) {
-        console.log(err);
-      }
+      makePayment()
     }
 
   }
 
   async function makePayment() {
-    // const requestBody = {
-    //   userName: "visakh",
-    //   email: "rvishakhs@gmail.com",
-    //   products: cart.map(({ id, count }) => ({
-    //     id,
-    //     count,
-    //   })),
-    // };
 
+    try{
+      const stripe = await stripePromise;
 
-    const checkoutSession = await fetchPostJSON(
-      "http://localhost:1337/api/orders",
-      { 
-          items : cart
-      }
-  );
+      const res = await makeRequest.post("orders", {
+        cart,
+      });
 
-    // const firstname = (getValues().firstname);
-    // const email = (getValues().email);
+      await stripe.redirectToCheckout({
+        sessionId: res.data.stripeSession.id,
+      });
 
+      // const firstname = (getValues().firstname);
+      // const email = (getValues().email);
 
-    // const response = await fetch("http://localhost:1337/api/orders", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(requestBody),
-    // });
+    } catch (error) {
+      console.log(error);
+    }
 
-
-    if ((checkoutSession).statusCode === 500) {
-      console.error((checkoutSession).message);
-      return 
-  }
-
-  // Redirect to checkput
-  const stripe = await getStripe();
-  const { error } = await stripe.redirectToCheckout({
-  // Make the id field from the Checkout Session creation API response
-  // available to this file, so you can provide it as parameter here
-  // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
-  sessionId: checkoutSession.id,
-  });
-  // If `redirectToCheckout` fails due to a browser or network
-  // error, display the localized error message to your customer
-  // using `error.message`.
-  console.warn(error.message);
-  console.log(error.message);
-
-    // const session = await response.json();
-    // await stripe.redirectToCheckout({
-    //   sessionId: response.data.session.Id,
-    // });
   }
 
 

@@ -40,14 +40,7 @@ function ShoppingList() {
     fetchData();
   }, [])
 
-  // useEffect(() => {
-  //   async function datafetch () {
-  //     const itemsdata = await fetchitems()
-  //     dispatch(setitems(itemsdata));
-  //   }
 
-  //   datafetch()
-  // }, [])
 
   const trendingItems = items.filter((item) => item.attributes.category  === "trending")
   const offerzoneItems = items.filter((item) => item.attributes.category  === "offer zone")
