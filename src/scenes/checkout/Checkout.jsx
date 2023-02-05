@@ -12,6 +12,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { fetchPostJSON } from '../../../utils/getstripe';
 import getStripe from '../../../utils/stripe';
 import { makeRequest } from '../../../utils/makeReqest';
+import axios from 'axios';
 
 
 
@@ -37,22 +38,16 @@ function Checkout() {
 
     try{
       const stripe = await stripePromise;
-
       const res = await makeRequest.post("orders", {
         cart,
       });
-
       await stripe.redirectToCheckout({
         sessionId: res.data.stripeSession.id,
       });
 
-      // const firstname = (getValues().firstname);
-      // const email = (getValues().email);
-
     } catch (error) {
       console.log(error);
     }
-
   }
 
 
